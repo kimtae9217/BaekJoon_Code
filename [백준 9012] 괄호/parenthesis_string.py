@@ -27,12 +27,15 @@ def solve():
         if item == '(':
             stack.append(item)
         else:
-            if len(stack) == 0:
+            # ')' 를 입력받을 경우 이전에 '('을 입력받은 적이 없는 경우, VPS가 아님
+            if not stack:  # if len(stack) == 0: 도 가능
                 print("NO")
-                return
+                return  # 종료
+            # stack에 '('가 있으므로 꺼냄
             else:
                 stack.pop()
-    if len(stack) == 0:
+    # 괄호를 전부 다 돌았는데 stack 안에 data가 남아 있다면 VPS가 아님
+    if not stack:  # if len(stack) == 0: 도 가능
         print("YES")
     else:
         print("NO")
